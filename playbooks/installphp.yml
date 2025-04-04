@@ -1,0 +1,27 @@
+---
+- name: Install php on the target node
+  hosts: all
+  become: yes
+  vars:
+    url: "https://www.php.net/distributions/php-8.4.5.tar.bz2"
+    target: /opt
+    filename: "{{ (url|split('/'))[-1] }}"
+    reqPHPversion: "{{ (url|split('/'))[-1]|split('.'))[0:3] }}"
+    filepath: "{{ target }}/{{ filename }}"
+  tasks:
+    - name: Download the required compressed file
+      ansible.builtin.get_url:
+        url: "{{ url }}"
+        dest: "{{ filepath }}"
+
+    - name: Extract the compressed file
+      ansible.builtin.unarchive:
+        src: "{{ filepath }}"
+        dest: "{{ target }}"
+        remote_src: true
+
+    - name: Remove the tar.bz2 file
+      ansible.builtin.file:
+        path: "{{ filename }}"
+        state: absent
+

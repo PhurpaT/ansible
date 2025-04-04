@@ -1,0 +1,11 @@
+---
+- name: Remove old java home
+  hosts: all
+  become: yes
+  gather_facts: false
+  tasks:
+  - name: Removing old JAVA_HOME
+    ansible.builtin.lineinfile:
+      path: /etc/environment
+      regex: "export JAVA_HOME"
+      state: absent
