@@ -3,44 +3,26 @@
   hosts: all
   gather_facts: false
   tasks:
-    - name: Running the java version command
-      ansible.builtin.command:
-        cmd: "java -version"
-      register: javaVersionOutput
-      ignore_errors: true
-
-    - name: Find java version when command succeeds
-      ansible.builtin.set_fact:
-        javaVersion: "{{ javaVersionOutput.stderr }}"
-      when: javaVersionOutput.rc == 0
-
-    - name: Display message when java version is not found
-      ansible.builtin.set_fact:
-        javaVersion: "javaNotFound"
-      when: javaVersionOutput.rc != 0
-      
-    - name: Dispaly java version
-      ansible.builtin.debug:
-        msg:
-          - javaVersion: "{{ javaVersion }}"
-
-    - name: Running the nginx version command
-      ansible.builtin.command:
-        cmd: "nginx -version"
-      register: nginxVersionOutput
-      ignore_errors: true
-
-    - name: Find nginx version when command succeeds
-      ansible.builtin.set_fact:
-        nginxVersion: "{{ nginxVersionOutput.stderr }}"
-      when: nginxVersionOutput.rc == 0
-
-    - name: Display message when nginx version is not found
-      ansible.builtin.set_fact:
-        nginxVersion: "nginxNotFound"
-      when: nginxVersionOutput.rc != 0
-      
-    - name: Display nginxVersion
-      ansible.builtin.debug:
-        msg:
-          - nginxVersion: "{{ nginxVersion }}"
+    - block:
+      - name: Running the java version command
+        ansible.builtin.command:
+          cmd: "java -version"
+        register: javaVersionOutput
+        notify: Display Java version
+        rescue:
+          - name: Msg if java not found
+            ansible.builtin.debug:
+              msg:
+                - "javaVersion: javaNotFound"
+    - block:
+      - name: Running the nginx version command
+        ansible.builtin.command:
+          cmd: "nginx -version"
+        register: nginxVersionOutput
+        notify: Display Nginx version
+        rescue:
+          - name: Msg if nginx not found
+            ansible.builtin.debug:
+              msg:
+                - "nginxVersion: nginxNotFound"
+  
