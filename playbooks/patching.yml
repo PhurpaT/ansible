@@ -47,14 +47,22 @@
 
     - name: Reboot if patching occured (RHEL)
       ansible.builtin.reboot:
-        msg: "Rebooting after the package upgrades"
+        msg: "Reboot initiated by ansible after the packages upgrade"
+        reboot_timeout: 60
+        pre_reboot_delay: 5
+        post_reboot_delay: 10
+        connection_timeout: 60
       when: 
         - ansible_os_family == "RedHat"
         - rhel_patch_results is changed 
 
     - name: Reboot if patching occured (Debian)
       ansible.builtin.reboot:
-        msg: "Rebooting after the package upgrades"
+        msg: "Reboot initiated by ansible after the packages upgrade"
+        reboot_timeout: 60
+        pre_reboot_delay: 5
+        post_reboot_delay: 10
+        connection_timeout: 60
       when: 
         - ansible_os_family == "Debian"
         - deb_patch_results is changed 
