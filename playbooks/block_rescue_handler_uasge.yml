@@ -4,25 +4,25 @@
   gather_facts: false
   tasks:
     - block:
-      - name: Running the java version command
-        ansible.builtin.command:
-          cmd: "java -version"
-        register: javaVersionOutput
-        notify: Display Java version
-        rescue:
-          - name: Msg if java not found
-            ansible.builtin.debug:
-              msg:
-                - "javaVersion: javaNotFound"
+        - name: Running the java version command
+          ansible.builtin.command:
+            cmd: "java -version"
+          register: javaVersionOutput
+          notify: Display Java version
+          rescue:
+            - name: Msg if java not found
+              ansible.builtin.debug:
+                msg:
+                  - "javaVersion: javaNotFound"
     - block:
-      - name: Running the nginx version command
-        ansible.builtin.command:
-          cmd: "nginx -version"
-        register: nginxVersionOutput
-        notify: Display Nginx version
-        rescue:
-          - name: Msg if nginx not found
-            ansible.builtin.debug:
-              msg:
-                - "nginxVersion: nginxNotFound"
-  
+        - name: Running the nginx version command
+          ansible.builtin.command:
+            cmd: "nginx -version"
+          register: nginxVersionOutput
+          notify: Display Nginx version
+          rescue:
+            - name: Msg if nginx not found
+              ansible.builtin.debug:
+                msg:
+                  - "nginxVersion: nginxNotFound"
+    
