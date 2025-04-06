@@ -40,7 +40,7 @@
         nginxVersion: "nginxNotFound"
       when: nginxVersionOutput.rc != 0
       
-    - name: Dispaly java nginx
+    - name: Display nginxVersion
       ansible.builtin.debug:
         msg:
           - nginxVersion: "{{ nginxVersion }}"
