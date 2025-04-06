@@ -37,7 +37,7 @@
 
     - name: Display message when nginx version is not found
       ansible.builtin.set_fact:
-        javaVersion: "javaNotFound"
+        nginxVersion: "nginxNotFound"
       when: nginxVersionOutput.rc != 0
       
     - name: Dispaly java nginx
