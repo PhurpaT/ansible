@@ -11,8 +11,9 @@
       when: ansible_os_family == "RedHat"
 
     - name: Remove old kernels and keep only the latest 2 kernel versions
-      ansible.builtin.command: package-cleanup --oldkernels --count=2 -y
+      ansible.builtin.shell:  dnf remove -y $(dnf repoquery --installonly --qf "%{name}-%{version}-%{release}.%{arch}" | grep -v "$(uname -r)" | sort -V | head -n -2)
       when:  ansible_os_family == "RedHat"
+      ignore_errors: true
 
     - name: Patch RHEL based servers
       ansible.builtin.dnf:
@@ -24,7 +25,9 @@
 
     - name: Install byobu for purge-old-kernels (Debian only)
       ansible.builtin.apt:
-        name: byobu
+        name: 
+          - byobu
+          - unattended-upgrades
         state: present
         update_cache: true
       when: ansible_os_family == "Debian"
