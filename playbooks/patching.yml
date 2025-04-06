@@ -1,0 +1,58 @@
+---
+- name: Patch all the linux servers
+  hosts: all
+  become: true
+  gather_facts: true
+  tasks:
+    - name: Install yum-utils for package-cleanup (RHEL only)
+      ansible.builtin.yum:
+        name: yum-utils
+        state: present
+      when: ansible_os_family == "RedHat"
+
+    - name: Remove old kernels and keep only the latest 2 kernel versions
+      ansible.builtin.command: "dnf remove $(dnf repoquery --installonly --latest-limit 2 -q) "
+      when:  ansible_os_family == "RedHat"
+
+    - name: Patch RHEL based servers
+      ansible.builtin.dnf:
+        name: "*"
+        state: latest
+        update_cache: true
+      register: rhel_patch_results
+      when:  ansible_os_family == "RedHat"
+
+    - name: Install byobu for purge-old-kernels (Debian only)
+      ansible.builtin.apt:
+        name: byobu
+        state: present
+        update_cache: true
+      when: ansible_os_family == "Debian"
+
+    - name: Remove old kernels and keep only the latest 2 kernel versions
+      ansible.builtin.command: "purge-old-kernels --keep 2 -qy"
+      when: ansible_os_family == "Debian"
+
+    - name : Patch Debian based servers
+      ansible.builtin.apt:
+        name: "*"
+        state: latest
+        upgrade: dist
+        update_cache: true
+      register: deb_patch_results
+      when: ansible_os_family == "Debian"
+
+    - name: Reboot if patching occured (RHEL)
+      ansible.builtin.reboot:
+        msg: "Rebooting after the package upgrades"
+      when: 
+        - ansible_os_family == "RedHat"
+        - rhel_patch_results is changed 
+
+    - name: Reboot if patching occured (Debian)
+      ansible.builtin.reboot:
+        msg: "Rebooting after the package upgrades"
+      when: 
+        - ansible_os_family == "Debian"
+        - deb_patch_results is changed 
+        
