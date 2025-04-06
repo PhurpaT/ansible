@@ -25,4 +25,11 @@
               ansible.builtin.debug:
                 msg:
                   - "nginxVersion: nginxNotFound"
-    
+  handlers:
+    - name: Display Java version
+      ansible.builtin.debug:
+        msg: "javaVersion: {{(javaVersionOutput.stderr|split)[2]|trim('\"')}}"
+      handlers:
+    - name: Display nginx version
+      ansible.builtin.debug:
+        msg: "nginxVersion: {{(nginxVersionOutput.stderr|split)[2]|trim('\"')}}"
