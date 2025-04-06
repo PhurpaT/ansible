@@ -31,4 +31,4 @@
         msg: "javaVersion: {{(javaVersionOutput.stderr|split)[2]|trim('\"')}}"
     - name: Display nginx version
       ansible.builtin.debug:
-        msg: "nginxVersion: {{(nginxVersionOutput.stderr|split)[2]|trim('\"')}}"
+        msg: "nginxVersion: {{(nginxVersionOutput.stderr|split('/'))[-1]}}"
