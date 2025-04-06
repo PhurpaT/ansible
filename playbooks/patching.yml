@@ -32,9 +32,9 @@
         update_cache: true
       when: ansible_os_family == "Debian"
 
-    - name: Remove old kernels and keep only the latest 2 kernel versions
-      ansible.builtin.command: purge-old-kernels --keep 2 -qy
-      when: ansible_os_family == "Debian"
+    # - name: Remove old kernels and keep only the latest 2 kernel versions
+    #   ansible.builtin.command: purge-old-kernels --keep 2 -qy
+    #   when: ansible_os_family == "Debian"
 
     - name : Patch Debian based servers
       ansible.builtin.apt:
