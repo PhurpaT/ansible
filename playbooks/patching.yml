@@ -54,7 +54,7 @@
         reboot_timeout: 60
         pre_reboot_delay: 5
         post_reboot_delay: 10
-        connection_timeout: 60
+        connect_timeout: 60
       when: 
         - ansible_os_family == "RedHat"
         - rhel_patch_results is changed 
@@ -65,7 +65,7 @@
         reboot_timeout: 60
         pre_reboot_delay: 5
         post_reboot_delay: 10
-        connection_timeout: 60
+        connect_timeout: 60
       when: 
         - ansible_os_family == "Debian"
         - deb_patch_results is changed 
