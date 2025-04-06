@@ -11,7 +11,6 @@
 
     - name: Find java version when command succeeds
       ansible.builtin.set_fact:
-        #javaVersion: "{{ (javaVersionOutput.stderr|split)[2]|trim('\"') }}"
         javaVersion: "{{ javaVersionOutput.stderr }}"
       when: javaVersionOutput.rc == 0
 
@@ -24,3 +23,24 @@
       ansible.builtin.debug:
         msg:
           - javaVersion: "{{ javaVersion }}"
+
+    - name: Running the nginx version command
+      ansible.builtin.command:
+        cmd: "nginx -version"
+      register: nginxVersionOutput
+      ignore_errors: true
+
+    - name: Find nginx version when command succeeds
+      ansible.builtin.set_fact:
+        nginxVersion: "{{ nginxVersionOutput.stderr }}"
+      when: nginxVersionOutput.rc == 0
+
+    - name: Display message when nginx version is not found
+      ansible.builtin.set_fact:
+        javaVersion: "javaNotFound"
+      when: nginxVersionOutput.rc != 0
+      
+    - name: Dispaly java nginx
+      ansible.builtin.debug:
+        msg:
+          - nginxVersion: "{{ nginxVersion }}"
