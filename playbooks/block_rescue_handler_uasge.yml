@@ -1,0 +1,26 @@
+---
+- name: using block and handler
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Running the java version command
+      ansible.builtin.command:
+        cmd: "java -version"
+      register: javaVersionOutput
+      ignore_errors: true
+
+    - name: Find java version when command succeeds
+      ansible.builtin.set_fact:
+        #javaVersion: "{{ (javaVersionOutput.stderr|split)[2]|trim('\"') }}"
+        javaVersion: "{{ javaVersionOutput.stderr }}"
+      when: javaVersionOutput.rc == 0
+
+    - name: Display message when java version is not found
+      ansible.builtin.set_fact:
+        javaVersion: "javaNotFound"
+      when: javaVersionOutput.rc != 0
+      
+    - name: Dispaly java version
+      ansible.builtin.debug:
+        msg:
+          - javaVersion: "{{ javaVersion }}"
