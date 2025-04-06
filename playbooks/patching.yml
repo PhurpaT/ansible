@@ -11,7 +11,7 @@
       when: ansible_os_family == "RedHat"
 
     - name: Remove old kernels and keep only the latest 2 kernel versions
-      ansible.builtin.command: "dnf remove $(dnf repoquery --installonly --latest-limit 2 -q) "
+      ansible.builtin.command: package-cleanup --oldkernels --count=2 -y
       when:  ansible_os_family == "RedHat"
 
     - name: Patch RHEL based servers
@@ -30,7 +30,7 @@
       when: ansible_os_family == "Debian"
 
     - name: Remove old kernels and keep only the latest 2 kernel versions
-      ansible.builtin.command: "purge-old-kernels --keep 2 -qy"
+      ansible.builtin.command: purge-old-kernels --keep 2 -qy
       when: ansible_os_family == "Debian"
 
     - name : Patch Debian based servers
