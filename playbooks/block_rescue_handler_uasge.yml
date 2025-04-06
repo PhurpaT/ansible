@@ -19,7 +19,7 @@
           ansible.builtin.command:
             cmd: "nginx -version"
           register: nginxVersionOutput
-          notify: Display Nginx version
+          notify: Display nginx version
       rescue:
         - name: Msg if nginx not found
           ansible.builtin.debug:
