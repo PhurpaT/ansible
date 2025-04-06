@@ -9,22 +9,22 @@
             cmd: "java -version"
           register: javaVersionOutput
           notify: Display Java version
-          rescue:
-            - name: Msg if java not found
-              ansible.builtin.debug:
-                msg:
-                  - "javaVersion: javaNotFound"
+      rescue:
+        - name: Msg if java not found
+          ansible.builtin.debug:
+            msg:
+              - "javaVersion: javaNotFound"
     - block:
         - name: Running the nginx version command
           ansible.builtin.command:
             cmd: "nginx -version"
           register: nginxVersionOutput
           notify: Display Nginx version
-          rescue:
-            - name: Msg if nginx not found
-              ansible.builtin.debug:
-                msg:
-                  - "nginxVersion: nginxNotFound"
+      rescue:
+        - name: Msg if nginx not found
+          ansible.builtin.debug:
+            msg:
+              - "nginxVersion: nginxNotFound"
   handlers:
     - name: Display Java version
       ansible.builtin.debug:
