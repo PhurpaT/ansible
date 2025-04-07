@@ -8,6 +8,7 @@
       ansible.builtin.file:
         path: /tmp/{{ item }}
         state: touch
+        mode: 0660
       loop:
         - test1
         - test2
