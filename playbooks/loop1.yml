@@ -6,7 +6,7 @@
   tasks:
     - name: Create a number of files in /tmp directory
       ansible.builtin.file:
-        path: /tmp/{{ item }}
+        path: /tmp/"{{ item }}""
         state: touch
         mode: 0660
       loop:
