@@ -4,16 +4,18 @@
   become: true
   vars:
     target_file:
-      index.html:
-        dir: /var/www/html/
-        mode: 0660
-        owner: nginx
-        group: nginx
-      error.html:
-        dir: /var/www/html/
-        mode: 0660
+      - { name: 'index.html', dir: '/var/www/html/', mode: '0660', owner: 'nginx', group: 'nginx' }
+      - { name: 'error.html', dir: '/var/www/html/', mode: '0660' }
+      # index.html:
+      #   dir: /var/www/html/
+      #   mode: 0660
+      #   owner: nginx
+      #   group: nginx
+      # error.html:
+      #   dir: /var/www/html/
+      #   mode: 0660
   tasks:
   - name: Check with debug message
     ansible.builtin.debug:
-      msg: "The files {{ item.value }} will be created on {{ item.value.dir }}"
+      msg: "The files {{ item.name }} will be created on {{ item.dir }}"
     
