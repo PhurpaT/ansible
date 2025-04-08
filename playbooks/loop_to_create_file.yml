@@ -22,5 +22,5 @@
       #   path: "{{item.dir}}/{{item.name}}"
       #   state: touch
       #   mode: item.mode
-      # loop: "{{ target_file }}"
+    loop: "{{ target_file }}"
 ...
