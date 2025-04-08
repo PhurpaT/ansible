@@ -15,5 +15,5 @@
   tasks:
   - name: Check with debug message
     ansible.builtin.debug:
-      msg: "The file {{ item.value }} will be created on {{ item.value.dir }} "
+      msg: "The file {{ item.value }} will be created on {{ item.value. }}"
     
