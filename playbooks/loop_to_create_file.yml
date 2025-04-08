@@ -15,9 +15,9 @@
       #   dir: /var/www/html/
       #   mode: 0660
   tasks:
-    - name: Check with debug message
-      ansible.builtin.debug:
-        msg: "The files {{ item.name }} will be created on {{ item.dir }}"
+  - name: Check with debug message
+    ansible.builtin.debug:
+      msg: "The files {{ item.name }} will be created on {{ item.dir }}"
       # ansible.builtin.file:
       #   path: "{{item.dir}}/{{item.name}}"
       #   state: touch
