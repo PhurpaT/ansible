@@ -1,0 +1,14 @@
+---
+- name: Create multiple files in different directory
+  hosts: all
+  become: true
+  tasks:
+  - name: Create files and update permission
+    ansible.builtin.file:
+      path: /var/www/html/{{ item.src }}
+      mode: item.mode
+      state: touch
+    loop:
+      - {src: index.html, mode: 0660}
+      - {src: error.html, mode: 0660}
+
