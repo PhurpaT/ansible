@@ -4,8 +4,8 @@
   become: true
   vars:
     target_file:
-      - { name: 'index.html', dir: '/var/www/html/', mode: '0660', owner: 'nginx', group: 'nginx' }
-      - { name: 'error.html', dir: '/var/www/html/', mode: '0660' }
+      - { 'name': 'index.html', 'dir': '/var/www/html/', 'mode': '0660', 'owner': 'nginx', 'group': 'nginx' }
+      - { 'name': 'error.html', 'dir': '/var/www/html/', 'mode': '0660' }
       # index.html:
       #   dir: /var/www/html/
       #   mode: 0660
@@ -17,5 +17,10 @@
   tasks:
     - name: Check with debug message
       ansible.builtin.debug:
-        msg: "files={{ item.name }} directory={{ item.dir }}"
+        msg: "The files {{ item.name }} will be created on {{ item.dir }}"
+      # ansible.builtin.file:
+      #   path: "{{item.dir}}/{{item.name}}"
+      #   state: touch
+      #   mode: item.mode
+      # loop: "{{ target_file }}"
 ...
