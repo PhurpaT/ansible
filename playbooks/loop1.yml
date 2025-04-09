@@ -15,7 +15,6 @@
         state: touch
         mode: 0660
       loop: "{{ files }}"
-      wantlist: True
 #         - test1
 #         - test2
 #         - test3
