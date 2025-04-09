@@ -17,5 +17,17 @@
     ansible.builtin.dnf:
       name: "{{ pkg.get(ansible_facts['os_family']) }}"
       state: present
+      update_cache: true
     when: ansible_facts['os_family'] == "RedHat"
+  - name: Copy customized index.html to /var/www/html/
+    template:
+      src: index.j2
+      dest: /var/www/html/index.html
+    notify: restart web apps
+  handlers:
+    - name: restart web app servers
+      ansible.builtin.service:
+        name: "{{ pkg.get(ansible_facts['os_family']) }}"
+        state: restarted
+    
     
