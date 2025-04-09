@@ -23,7 +23,7 @@
     - name: Create the files on the target directory
       ansible.builtin.file:
         path: "{{ item.value.dir }}/{{ item.key }}"
-        state: touch
+        state: absent
         mode: "{{ item.value.mode }}"
         # owner: "{{ item.value.owner }}"
         # group: "{{ item.value.group }}"
