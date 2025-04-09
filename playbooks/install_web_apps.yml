@@ -9,13 +9,13 @@
   tasks:
   - name: Install web app package on Debian based OS
     ansible.builtin.apt:
-      name: "{{ pkg.get(ansible_facts['ansible_pkg_mgr']) }}"
+      name: "{{ pkg.get(ansible_facts['os_family']) }}"
       state: present
       update_cache: true
-    when: ansible_facts['ansible_pkg_mgr'] == "apt"
+    when: ansible_facts['os_family'] == "Debian"
   - name: Install web app package on RHEL based OS 
     ansible.builtin.dnf:
-      name: "{{ pkg.get(ansible_facts['ansible_pkg_mgr']) }}"
+      name: "{{ pkg.get(ansible_facts['os_family']) }}"
       state: present
-    when: ansible_facts['ansible_pkg_mgr'] == "dnf"
+    when: ansible_facts['os_family'] == "RedHat"
     
