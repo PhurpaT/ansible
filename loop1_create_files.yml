@@ -6,10 +6,10 @@
     reqFiles:
       config:
         - mode: 0660
-        - dir: /tmp
-      config.defualt:
+        - dir: /opt
+      config.default:
         - mode: 0660
-        - dir: /tmp
+        - dir: /home/pt
         - owner: pt 
         - group: root
       config.test:
