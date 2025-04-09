@@ -15,6 +15,7 @@
         state: touch
         mode: "0660"
       loop: "{{ files }}"
+#      loop: Remove or comment out the above vars parameter to use this loop
 #         - test1
 #         - test2
 #         - test3
