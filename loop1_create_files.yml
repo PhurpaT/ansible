@@ -19,6 +19,14 @@
     - name: Simple message to see which files are created in which directory
       ansible.builtin.debug:
         msg: "The files {{ item.key }} will be created in {{ item.value.dir }} location"
+      
+    - name: Create the files on the target directory
+      ansible.builtin.file:
+        path: "{{ item.value.dir }}/{{ item.key }}"
+        state: touch
+        mode: "{{ item.value.mode }}"
+        owner: "{{ item.value.owner }}"
+        group: "{{ item.value.group }}"
       with_dict: "{{ reqFiles }}"
 ...
       
