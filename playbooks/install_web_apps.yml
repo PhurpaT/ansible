@@ -1,0 +1,20 @@
+---
+- name: Install web app server based on pkg manager
+  become: true
+  hosts: all
+  vars:
+    pkg:
+       RHEL: httpd
+       Debian: apache2
+  tasks:
+  - name: Install web app package on Debian based OS
+    ansible.builtin.package:
+      name: "{{ item.Debian }}"
+      state: present
+    when: ansible_pkg_mgr == apt
+
+  - name: Install web app package on RHEL based OS 
+    ansible.builtin.package:
+      name: "{{ item.RHEL }}"
+      state: present
+    when: ansible_pkg_mgr == dnf
