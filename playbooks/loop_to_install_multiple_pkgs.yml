@@ -1,0 +1,13 @@
+---
+- name: Using loop to install multiple packages
+  hosts: all
+  become: true
+  tasks:
+    - name: Install the packages.
+      ansible.builtin.packages:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - wget
+        - curl
+        - apache
