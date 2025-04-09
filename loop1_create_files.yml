@@ -29,5 +29,17 @@
         group: "{{ reqFiles['config.default'].group }}"
       with_dict: "{{ reqFiles }}"
       #when: item.key != "config.default"
+#The dict was created with the msg below
+
+# ok: [192.168.56.9] => (item={'key': 'config', 'value': {'mode': '0660', 'dir': '/opt'}}) => {
+#     "msg": "The files config will be created in /opt location"
+# }
+# ok: [192.168.56.9] => (item={'key': 'config.default', 'value': {'mode': '0660', 'dir': '/home/pt', 'owner': 'pt', 'group': 'root'}}) => {
+#     "msg": "The files config.default will be created in /home/pt location"
+# }
+# ok: [192.168.56.9] => (item={'key': 'config.test', 'value': {'mode': '0750', 'dir': '/tmp'}}) => {
+#     "msg": "The files config.test will be created in /tmp location"
+#}
+
 ...
       
