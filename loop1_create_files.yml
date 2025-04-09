@@ -1,24 +1,24 @@
----
-- name: Another way to create multiple files using loop
-  hosts: all 
-  become: true
-  vars:
-    reqFiles:
-      config:
-        - mode: "0660"
-        - dir: "/opt"
-      config.default:
-        - mode: "0660"
-        - dir: "/home/pt"
-        - owner: "pt"
-        - group: "root"
-      config.test:
-        - mode: "0750"
-        - dir: "/tmp"
-  tasks:
-  - name: Simple message to see which files are created in which directory
-    ansible.builtin.debug:
-      msg: "The files {{ item.key }} will be created in {{ item.value.dir }} location"
-    loop: "{{ reqFiles | dict2items }}"
+--- 
+ - name: Another way to create multiple files using loop
+   hosts: all 
+   become: true
+   vars:
+   reqFiles:
+     config:
+       mode: "0660"
+       dir: "/opt"
+     config.default:
+       mode: "0660"
+       dir: "/home/pt"
+       owner: "pt"
+       group: "root"
+     config.test:
+       mode: "0750"
+       dir: "/tmp"
+   tasks:
+     - name: Simple message to see which files are created in which directory
+       ansible.builtin.debug:
+         msg: "The files {{ item.key }} will be created in {{ item.value.dir }} location"
+       with_dict: "{{ reqFiles }}"
     
       
