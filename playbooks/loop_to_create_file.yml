@@ -18,9 +18,9 @@
   - name: Check with debug message
     ansible.builtin.debug:
       msg: "The files {{ item.name }} will be created on {{ item.dir }}"
-      # ansible.builtin.file:
-      #   path: "{{item.dir}}/{{item.name}}"
-      #   state: touch
-      #   mode: item.mode
+    ansible.builtin.file:
+      path: "{{item.dir}}/{{item.name}}"
+      state: touch
+      mode: item.mode
     loop: "{{ target_file }}"
 ...
