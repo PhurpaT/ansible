@@ -12,10 +12,10 @@
       name: "{{ pkg.get(ansible_facts['ansible_pkg_mgr']) }}"
       state: present
       update_cache: true
-    when: ansible_pkg_mgr == "apt"
+    when: ansible_facts['ansible_pkg_mgr'] == "apt"
   - name: Install web app package on RHEL based OS 
     ansible.builtin.dnf:
       name: "{{ pkg.get(ansible_facts['ansible_pkg_mgr']) }}"
       state: present
-    when: ansible_pkg_mgr == "dnf"
+    when: ansible_facts['ansible_pkg_mgr'] == "dnf"
     
