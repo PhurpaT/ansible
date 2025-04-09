@@ -10,5 +10,5 @@
     loop:
       - wget
       - curl
-      - apache
+      - nginx
 ...
