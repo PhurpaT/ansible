@@ -18,7 +18,7 @@
   tasks:
   - name: Simple message to see which files are created in which directory
     ansible.builtin.debug:
-      msg: "The files {{ item.value }} will be created"
-    loop: "{{ reqFiles }}"
+      msg: "The files  will be created in {{ item.value.dir }}"
+    with_dict: "{{ reqFiles }}"
     
       
