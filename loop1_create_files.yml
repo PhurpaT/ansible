@@ -1,0 +1,24 @@
+---
+- name: Another way to create multiple files using loop
+  hosts: all 
+  become: true
+  vars:
+    reqFiles:
+      config:
+        - mode: 0660
+        - dir: /tmp
+      config.defualt:
+        - mode: 0660
+        - dir: /tmp
+        - owner: pt 
+        - group: root
+      config.test:
+        - mode: 0750
+        - dir: /tmp
+  tasks:
+  - name: Simple message to see which files are created in which directory
+    ansible.builtin.debug:
+      msg: "The files {{ items}} will be created"
+    loop: "{{ reqFiles}}"
+    
+      
