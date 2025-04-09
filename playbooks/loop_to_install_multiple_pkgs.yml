@@ -3,7 +3,7 @@
   hosts: all
   become: true
   tasks:
-  - name: Install the packages.
+  - name: Install the packages
     ansible.builtin.package:
       name: "{{ item }}"
       state: present
@@ -12,3 +12,5 @@
       - curl
       - nginx
 ...
+
+
