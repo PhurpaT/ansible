@@ -22,6 +22,6 @@
     ansible.builtin.file:
       path: "{{item.dir}}/{{item.name}}"
       state: touch
-      mode: item.mode
+      mode: "{{ item.mode }}"
     loop: "{{ target_file }}"
 ...
