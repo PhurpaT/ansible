@@ -25,9 +25,9 @@
         path: "{{ item.value.dir }}/{{ item.key }}"
         state: absent
         mode: "{{ item.value.mode }}"
-        # owner: "{{ item.value.owner }}"
-        # group: "{{ item.value.group }}"
+        owner: "{{ reqFiles['config.default'].owner }}"
+        group: "{{ reqFiles['config.default'].group }}"
       with_dict: "{{ reqFiles }}"
-      when: item.key != "config.default"
+      #when: item.key != "config.default"
 ...
       
