@@ -3,14 +3,19 @@
   hosts: all
   become: true
   gather_facts: false
+  vars:
+    files:
+      test1
+      test2
+      test3
   tasks:
     - name: Create a number of files in /tmp directory
       ansible.builtin.file:
         path: /tmp/"{{ item }}""
         state: touch
         mode: 0660
-      loop:
-        - test1
-        - test2
-        - test3
+      loop: "{{ files }}"
+#         - test1
+#         - test2
+#         - test3
 ...
