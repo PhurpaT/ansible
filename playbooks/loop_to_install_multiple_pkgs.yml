@@ -3,11 +3,12 @@
   hosts: all
   become: true
   tasks:
-    - name: Install the packages.
-      ansible.builtin.packages:
-        name: "{{ item }}"
-        state: present
-      loop:
-        - wget
-        - curl
-        - apache
+  - name: Install the packages.
+    ansible.builtin.packages:
+      name: "{{ item }}"
+      state: present
+    loop:
+      - wget
+      - curl
+      - apache
+...
