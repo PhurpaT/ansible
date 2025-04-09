@@ -25,8 +25,9 @@
         path: "{{ item.value.dir }}/{{ item.key }}"
         state: touch
         mode: "{{ item.value.mode }}"
-        owner: "{{ item.value.owner }}"
-        group: "{{ item.value.group }}"
+        # owner: "{{ item.value.owner }}"
+        # group: "{{ item.value.group }}"
       with_dict: "{{ reqFiles }}"
+      when: item.key != "config.default"
 ...
       
