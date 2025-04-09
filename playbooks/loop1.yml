@@ -14,7 +14,7 @@
         path: /tmp/"{{ item }}"
         state: touch
         mode: "0660"
-      loop: "{{ files }}"
+      loop: "{{ item }}"
 #         - test1
 #         - test2
 #         - test3
