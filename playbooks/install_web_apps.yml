@@ -11,10 +11,12 @@
     ansible.builtin.package:
       name: "{{ item.Debian }}"
       state: present
-    when: ansible_pkg_mgr == apt
+    when: ansible_pkg_mgr == "apt"
+    loop: " {{ pkg }}"
 
   - name: Install web app package on RHEL based OS 
     ansible.builtin.package:
       name: "{{ item.RHEL }}"
       state: present
-    when: ansible_pkg_mgr == dnf
+    when: ansible_pkg_mgr == "dnf"
+    loop: " {{ pkg }}"
