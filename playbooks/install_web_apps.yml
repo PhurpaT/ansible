@@ -9,14 +9,14 @@
   tasks:
   - name: Install web app package on Debian based OS
     ansible.builtin.package:
-      name: "{{ item.Debian }}"
+      name: "{{ pkg.get(ansible_facts['ansible_pkg_mgr']) }}"
       state: present
     when: ansible_pkg_mgr == "apt"
-    loop: " {{ pkg }}"
+
 
   - name: Install web app package on RHEL based OS 
     ansible.builtin.package:
-      name: "{{ item.RHEL }}"
+      name: "{{ pkg.get(ansible_facts['ansible_pkg_mgr']) }}"
       state: present
     when: ansible_pkg_mgr == "dnf"
-    loop: " {{ pkg }}"
+    
