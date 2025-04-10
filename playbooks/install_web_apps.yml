@@ -4,7 +4,7 @@
   hosts: all
   vars:
     pkg:
-       RHEL: httpd
+       RedHat: httpd
        Debian: apache2
   tasks:
   - name: Install web app package on Debian based OS
