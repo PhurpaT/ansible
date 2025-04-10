@@ -1,0 +1,55 @@
+2025-04-10 20:11:28,330 p=2024 u=pt n=ansible WARNING| [WARNING]: Platform linux on host 192.168.56.7 is using the discovered Python interpreter at /usr/bin/python3.12, but future
+installation of another Python interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-
+core/2.18/reference_appendices/interpreter_discovery.html for more information.
+
+2025-04-10 20:11:28,391 p=2024 u=pt n=ansible INFO| 192.168.56.7 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3.12"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+2025-04-10 20:11:29,988 p=2024 u=pt n=ansible WARNING| [WARNING]: Platform linux on host 192.168.56.8 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation
+of another Python interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-
+core/2.18/reference_appendices/interpreter_discovery.html for more information.
+
+2025-04-10 20:11:29,989 p=2024 u=pt n=ansible INFO| 192.168.56.8 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3.9"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+2025-04-10 20:11:30,033 p=2024 u=pt n=ansible WARNING| [WARNING]: Platform linux on host 192.168.56.6 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation
+of another Python interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-
+core/2.18/reference_appendices/interpreter_discovery.html for more information.
+
+2025-04-10 20:11:30,033 p=2024 u=pt n=ansible INFO| 192.168.56.6 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3.9"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+2025-04-10 20:11:30,088 p=2024 u=pt n=ansible WARNING| [WARNING]: Platform linux on host 192.168.56.9 is using the discovered Python interpreter at /usr/bin/python3.12, but future
+installation of another Python interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-
+core/2.18/reference_appendices/interpreter_discovery.html for more information.
+
+2025-04-10 20:11:30,088 p=2024 u=pt n=ansible INFO| 192.168.56.9 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3.12"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+2025-04-10 20:11:30,242 p=2024 u=pt n=ansible WARNING| [WARNING]: Platform linux on host 192.168.56.10 is using the discovered Python interpreter at /usr/bin/python3.12, but future
+installation of another Python interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-
+core/2.18/reference_appendices/interpreter_discovery.html for more information.
+
+2025-04-10 20:11:30,242 p=2024 u=pt n=ansible INFO| 192.168.56.10 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3.12"
+    },
+    "changed": false,
+    "ping": "pong"
+}
