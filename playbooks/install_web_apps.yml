@@ -23,9 +23,9 @@
     template:
       src: index.j2
       dest: /var/www/html/index.html
-    notify: restart web apps
+    notify: Restart web app servers
   handlers:
-    - name: Restart web apps
+    - name: Restart web app servers
       ansible.builtin.service:
         name: "{{ pkg.get(ansible_facts['os_family']) }}"
         state: restarted
