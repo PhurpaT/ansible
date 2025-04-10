@@ -1,3 +1,8 @@
 #SPDX-License-Identifier: MIT-0
 ---
 # handlers file for ansible-role-httpd
+- name: Restart web app servers
+  ansible.builtin.service:
+    name: "{{ pkg.get(ansible_facts['os_family']) }}"
+    state: restarted
+...
