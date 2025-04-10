@@ -1,5 +1,5 @@
 ---
-- name: Install web app server based on pkg manager
+- name: Install web app server based on OS
   become: true
   hosts: all
   vars:
