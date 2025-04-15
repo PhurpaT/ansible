@@ -53,3 +53,157 @@ core/2.18/reference_appendices/interpreter_discovery.html for more information.
     "changed": false,
     "ping": "pong"
 }
+2025-04-10 21:53:38,466 p=1300 u=pt n=ansible INFO| PLAY [Install web app server based on OS] ***********************************************************************************************
+2025-04-10 21:53:38,531 p=1300 u=pt n=ansible INFO| TASK [Gathering Facts] ******************************************************************************************************************
+2025-04-10 21:53:39,024 p=1300 u=pt n=ansible ERROR| ERROR! A worker was found in a dead state
+2025-04-10 21:53:52,561 p=1342 u=pt n=ansible INFO| playbook: playbooks/install_web_apps.yml
+2025-04-10 21:54:02,523 p=1345 u=pt n=ansible INFO| PLAY [Install web app server based on OS] ***********************************************************************************************
+2025-04-10 21:54:02,546 p=1345 u=pt n=ansible INFO| TASK [Gathering Facts] ******************************************************************************************************************
+2025-04-10 21:54:08,778 p=1345 u=pt n=ansible INFO| fatal: [192.168.56.10]: FAILED! => {"msg": "Missing sudo password"}
+2025-04-10 21:54:40,491 p=1345 u=pt n=ansible WARNING| [WARNING]: Platform linux on host 192.168.56.8 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation
+of another Python interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-
+core/2.18/reference_appendices/interpreter_discovery.html for more information.
+
+2025-04-10 21:54:40,492 p=1345 u=pt n=ansible INFO| ok: [192.168.56.8]
+2025-04-10 21:54:40,686 p=1345 u=pt n=ansible WARNING| [WARNING]: Platform linux on host 192.168.56.6 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation
+of another Python interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-
+core/2.18/reference_appendices/interpreter_discovery.html for more information.
+
+2025-04-10 21:54:40,687 p=1345 u=pt n=ansible INFO| ok: [192.168.56.6]
+2025-04-10 21:54:50,631 p=1345 u=pt n=ansible WARNING| [WARNING]: Platform linux on host 192.168.56.7 is using the discovered Python interpreter at /usr/bin/python3.12, but future
+installation of another Python interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-
+core/2.18/reference_appendices/interpreter_discovery.html for more information.
+
+2025-04-10 21:54:50,632 p=1345 u=pt n=ansible INFO| ok: [192.168.56.7]
+2025-04-10 21:55:10,707 p=1345 u=pt n=ansible WARNING| [WARNING]: Platform linux on host 192.168.56.9 is using the discovered Python interpreter at /usr/bin/python3.12, but future
+installation of another Python interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-
+core/2.18/reference_appendices/interpreter_discovery.html for more information.
+
+2025-04-10 21:55:10,707 p=1345 u=pt n=ansible INFO| ok: [192.168.56.9]
+2025-04-10 21:55:10,727 p=1345 u=pt n=ansible INFO| TASK [ansible-role-httpd : Install web app package on Debian based OS] ******************************************************************
+2025-04-10 21:55:10,899 p=1345 u=pt n=ansible INFO| skipping: [192.168.56.8]
+2025-04-10 21:55:10,966 p=1345 u=pt n=ansible INFO| skipping: [192.168.56.6]
+2025-04-10 21:55:29,076 p=1345 u=pt n=ansible INFO| ok: [192.168.56.7]
+2025-04-10 21:55:30,484 p=1345 u=pt n=ansible INFO| ok: [192.168.56.9]
+2025-04-10 21:55:30,508 p=1345 u=pt n=ansible INFO| TASK [ansible-role-httpd : Install web app package on RHEL based OS] ********************************************************************
+2025-04-10 21:55:30,812 p=1345 u=pt n=ansible INFO| skipping: [192.168.56.7]
+2025-04-10 21:55:30,815 p=1345 u=pt n=ansible INFO| skipping: [192.168.56.9]
+2025-04-10 21:55:44,452 p=1345 u=pt n=ansible INFO| ok: [192.168.56.8]
+2025-04-10 21:55:46,786 p=1345 u=pt n=ansible INFO| ok: [192.168.56.6]
+2025-04-10 21:55:46,811 p=1345 u=pt n=ansible INFO| TASK [ansible-role-httpd : Copy customized index.html to /var/www/html/] ****************************************************************
+2025-04-10 21:55:52,844 p=1345 u=pt n=ansible INFO| changed: [192.168.56.7]
+2025-04-10 21:55:52,947 p=1345 u=pt n=ansible INFO| changed: [192.168.56.9]
+2025-04-10 21:55:53,198 p=1345 u=pt n=ansible INFO| changed: [192.168.56.8]
+2025-04-10 21:55:53,456 p=1345 u=pt n=ansible INFO| changed: [192.168.56.6]
+2025-04-10 21:55:53,583 p=1345 u=pt n=ansible INFO| RUNNING HANDLER [ansible-role-httpd : Restart web app servers] **************************************************************************
+2025-04-10 21:56:00,596 p=1345 u=pt n=ansible INFO| fatal: [192.168.56.8]: FAILED! => {"changed": false, "msg": "Unable to start service httpd: Job for httpd.service failed because the control process exited with error code.\nSee \"systemctl status httpd.service\" and \"journalctl -xeu httpd.service\" for details.\n"}
+2025-04-10 21:56:01,242 p=1345 u=pt n=ansible INFO| changed: [192.168.56.6]
+2025-04-10 21:56:01,416 p=1345 u=pt n=ansible INFO| changed: [192.168.56.9]
+2025-04-10 21:56:10,306 p=1345 u=pt n=ansible INFO| fatal: [192.168.56.7]: FAILED! => {"changed": false, "msg": "Unable to start service apache2: Job for apache2.service failed because the control process exited with error code.\nSee \"systemctl status apache2.service\" and \"journalctl -xeu apache2.service\" for details.\n"}
+2025-04-10 21:56:10,310 p=1345 u=pt n=ansible INFO| PLAY RECAP ******************************************************************************************************************************
+2025-04-10 21:56:10,312 p=1345 u=pt n=ansible INFO| 192.168.56.10              : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2025-04-10 21:56:10,313 p=1345 u=pt n=ansible INFO| 192.168.56.6               : ok=4    changed=2    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+2025-04-10 21:56:10,313 p=1345 u=pt n=ansible INFO| 192.168.56.7               : ok=3    changed=1    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+2025-04-10 21:56:10,313 p=1345 u=pt n=ansible INFO| 192.168.56.8               : ok=3    changed=1    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+2025-04-10 21:56:10,313 p=1345 u=pt n=ansible INFO| 192.168.56.9               : ok=4    changed=2    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+2025-04-10 22:35:25,658 p=1651 u=pt n=ansible INFO| PLAY [Install web app server based on OS] *********************************************************************************************************************
+2025-04-10 22:35:25,685 p=1651 u=pt n=ansible INFO| TASK [Gathering Facts] ****************************************************************************************************************************************
+2025-04-10 22:35:30,367 p=1651 u=pt n=ansible INFO| fatal: [192.168.56.10]: FAILED! => {"msg": "Missing sudo password"}
+2025-04-10 22:35:44,159 p=1651 u=pt n=ansible WARNING| [WARNING]: Platform linux on host 192.168.56.7 is using the discovered Python interpreter at /usr/bin/python3.12, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.18/reference_appendices/interpreter_discovery.html for more
+information.
+
+2025-04-10 22:35:44,159 p=1651 u=pt n=ansible INFO| ok: [192.168.56.7]
+2025-04-10 22:35:54,023 p=1651 u=pt n=ansible WARNING| [WARNING]: Platform linux on host 192.168.56.8 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.18/reference_appendices/interpreter_discovery.html for more
+information.
+
+2025-04-10 22:35:54,023 p=1651 u=pt n=ansible INFO| ok: [192.168.56.8]
+2025-04-10 22:35:54,210 p=1651 u=pt n=ansible WARNING| [WARNING]: Platform linux on host 192.168.56.9 is using the discovered Python interpreter at /usr/bin/python3.12, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.18/reference_appendices/interpreter_discovery.html for more
+information.
+
+2025-04-10 22:35:54,210 p=1651 u=pt n=ansible INFO| ok: [192.168.56.9]
+2025-04-10 22:35:56,727 p=1651 u=pt n=ansible WARNING| [WARNING]: Platform linux on host 192.168.56.6 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.18/reference_appendices/interpreter_discovery.html for more
+information.
+
+2025-04-10 22:35:56,728 p=1651 u=pt n=ansible INFO| ok: [192.168.56.6]
+2025-04-10 22:35:56,743 p=1651 u=pt n=ansible INFO| TASK [ansible-role-httpd : Install web app package on Debian based OS] ****************************************************************************************
+2025-04-10 22:35:56,993 p=1651 u=pt n=ansible INFO| skipping: [192.168.56.8]
+2025-04-10 22:35:56,996 p=1651 u=pt n=ansible INFO| skipping: [192.168.56.6]
+2025-04-10 22:36:02,718 p=1651 u=pt n=ansible INFO| ok: [192.168.56.7]
+2025-04-10 22:36:05,041 p=1651 u=pt n=ansible INFO| ok: [192.168.56.9]
+2025-04-10 22:36:05,059 p=1651 u=pt n=ansible INFO| TASK [ansible-role-httpd : Install web app package on RHEL based OS] ******************************************************************************************
+2025-04-10 22:36:05,333 p=1651 u=pt n=ansible INFO| skipping: [192.168.56.7]
+2025-04-10 22:36:05,334 p=1651 u=pt n=ansible INFO| skipping: [192.168.56.9]
+2025-04-10 22:36:11,377 p=1651 u=pt n=ansible INFO| ok: [192.168.56.8]
+2025-04-10 22:36:14,792 p=1651 u=pt n=ansible INFO| ok: [192.168.56.6]
+2025-04-10 22:36:14,812 p=1651 u=pt n=ansible INFO| TASK [ansible-role-httpd : Copy customized index.html to /var/www/html/] **************************************************************************************
+2025-04-10 22:36:20,318 p=1651 u=pt n=ansible INFO| ok: [192.168.56.7]
+2025-04-10 22:36:20,330 p=1651 u=pt n=ansible INFO| ok: [192.168.56.9]
+2025-04-10 22:36:20,523 p=1651 u=pt n=ansible INFO| ok: [192.168.56.8]
+2025-04-10 22:36:20,558 p=1651 u=pt n=ansible INFO| ok: [192.168.56.6]
+2025-04-10 22:36:20,632 p=1651 u=pt n=ansible INFO| PLAY RECAP ****************************************************************************************************************************************************
+2025-04-10 22:36:20,633 p=1651 u=pt n=ansible INFO| 192.168.56.10              : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2025-04-10 22:36:20,635 p=1651 u=pt n=ansible INFO| 192.168.56.6               : ok=3    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+2025-04-10 22:36:20,635 p=1651 u=pt n=ansible INFO| 192.168.56.7               : ok=3    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+2025-04-10 22:36:20,635 p=1651 u=pt n=ansible INFO| 192.168.56.8               : ok=3    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+2025-04-10 22:36:20,636 p=1651 u=pt n=ansible INFO| 192.168.56.9               : ok=3    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+2025-04-10 22:36:53,854 p=1928 u=pt n=ansible WARNING| [WARNING]: Platform linux on host 192.168.56.7 is using the discovered Python interpreter at /usr/bin/python3.12, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.18/reference_appendices/interpreter_discovery.html for more
+information.
+
+2025-04-10 22:36:53,859 p=1928 u=pt n=ansible INFO| 192.168.56.7 | FAILED | rc=1 >>
+Call to PowerOff failed: Interactive authentication required.non-zero return code
+
+2025-04-10 22:36:54,059 p=1928 u=pt n=ansible WARNING| [WARNING]: Platform linux on host 192.168.56.9 is using the discovered Python interpreter at /usr/bin/python3.12, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.18/reference_appendices/interpreter_discovery.html for more
+information.
+
+2025-04-10 22:36:54,059 p=1928 u=pt n=ansible INFO| 192.168.56.9 | FAILED | rc=1 >>
+Call to PowerOff failed: Interactive authentication required.non-zero return code
+
+2025-04-10 22:36:54,165 p=1928 u=pt n=ansible WARNING| [WARNING]: Platform linux on host 192.168.56.8 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.18/reference_appendices/interpreter_discovery.html for more
+information.
+
+2025-04-10 22:36:54,166 p=1928 u=pt n=ansible INFO| 192.168.56.8 | FAILED | rc=1 >>
+Call to PowerOff failed: Access deniednon-zero return code
+
+2025-04-10 22:36:54,171 p=1928 u=pt n=ansible WARNING| [WARNING]: Platform linux on host 192.168.56.6 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.18/reference_appendices/interpreter_discovery.html for more
+information.
+
+2025-04-10 22:36:54,175 p=1928 u=pt n=ansible INFO| 192.168.56.6 | FAILED | rc=1 >>
+Call to PowerOff failed: Access deniednon-zero return code
+
+2025-04-10 22:36:54,426 p=1928 u=pt n=ansible WARNING| [WARNING]: Platform linux on host 192.168.56.10 is using the discovered Python interpreter at /usr/bin/python3.12, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.18/reference_appendices/interpreter_discovery.html for more
+information.
+
+2025-04-10 22:36:54,427 p=1928 u=pt n=ansible INFO| 192.168.56.10 | FAILED | rc=1 >>
+Call to PowerOff failed: Interactive authentication required.non-zero return code
+
+2025-04-10 22:38:04,370 p=2069 u=pt n=ansible INFO| 192.168.56.10 | FAILED | rc=-1 >>
+Missing sudo password
+
+2025-04-10 22:38:09,128 p=2069 u=pt n=ansible INFO| 192.168.56.6 | FAILED | rc=-1 >>
+Failed to connect to the host via ssh: System is going down. Unprivileged users are not permitted to log in anymore. For technical details, see pam_nologin(8).
+
+Connection closed by 192.168.56.6 port 22
+
+2025-04-10 22:38:10,779 p=2069 u=pt n=ansible INFO| 192.168.56.8 | FAILED | rc=-1 >>
+Failed to connect to the host via ssh: System is going down. Unprivileged users are not permitted to log in anymore. For technical details, see pam_nologin(8).
+
+Connection closed by 192.168.56.8 port 22
+
+2025-04-10 22:38:22,387 p=2069 u=pt n=ansible WARNING| [WARNING]: Platform linux on host 192.168.56.7 is using the discovered Python interpreter at /usr/bin/python3.12, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.18/reference_appendices/interpreter_discovery.html for more
+information.
+
+2025-04-10 22:38:22,389 p=2069 u=pt n=ansible INFO| 192.168.56.7 | CHANGED | rc=0 >>
+
+
+2025-04-10 22:47:14,507 p=2069 u=pt n=ansible ERROR|  [ERROR]: User interrupted execution
+

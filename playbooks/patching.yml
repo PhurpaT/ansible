@@ -23,7 +23,7 @@
       register: rhel_patch_results
       when:  ansible_os_family == "RedHat"
 
-    - name: Install byobu for purge-old-kernels (Debian only)
+    - name: Install byobu to purge-old-kernels (Debian only)
       ansible.builtin.apt:
         name: 
           - byobu
